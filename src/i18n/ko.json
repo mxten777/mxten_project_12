@@ -3,5 +3,26 @@
     "title": "동해기계 Donghae Machinery",
     "subtitle": "신뢰성 · 글로벌 확장성 · 안전 중심",
     "cta": "제품 보러가기"
+  },
+  "footer": {
+    "aria": "사이트 푸터",
+    "brand": "동해기계 Donghae Machinery",
+    "network": "글로벌 네트워크: 서울 · 부산 · 상하이 · LA",
+    "scale": "매출규모: 1,200억 원 / 30개국 수출",
+    "tel": "대표전화",
+    "email": "이메일",
+    "menuAria": "푸터 메뉴",
+    "policyAria": "개인정보 처리방침",
+    "policy": "개인정보 처리방침",
+    "inquiryAria": "문의하기",
+    "inquiry": "문의하기",
+    "downloadAria": "카탈로그 다운로드",
+    "download": "카탈로그 다운로드",
+    "copyright": "All rights reserved."
+  },
+  "slogan": {
+    "growth": "WE WILL ACHIEVE GLOBAL GROWTH",
+    "passion": "WITH LIMITLESS PASSION",
+    "safety": "AND A FOCUS ON SAFETY."
   }
 }
