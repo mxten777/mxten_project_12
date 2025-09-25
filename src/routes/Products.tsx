@@ -1,8 +1,11 @@
 // ...existing code...
 import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import Modal from '../components/Modal';
 
 export default function Products() {
+  const [selected, setSelected] = useState<null | typeof products[0]>(null);
   // 샘플 카테고리/제품 데이터
   const categories = [
     { id: 'cat1', name: '유압기기' },
@@ -17,6 +20,26 @@ export default function Products() {
   const { t } = useTranslation();
   return (
     <main className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-50 to-mint-400/10 px-4 md:px-8 py-16 md:py-28 font-sans" role="main">
+      <Modal open={!!selected} onClose={() => setSelected(null)} title={selected?.name + ' 상세정보'}>
+        {selected && (
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <CubeTransparentIcon className="w-6 h-6 text-blue-400" />
+              <span className="font-bold text-lg text-navy">{selected.name}</span>
+            </div>
+            <div className="text-gray-700 text-base mb-1">{selected.desc}</div>
+            <div className="text-xs text-gray-400 mb-2">카테고리: {categories.find(c => c.id === selected.category)?.name}</div>
+            <ul className="text-sm text-gray-600 list-disc list-inside mb-2">
+              <li>고효율, 내구성 강화</li>
+              <li>글로벌 인증 획득</li>
+              <li>다양한 산업 현장 적용</li>
+              <li>최신 기술 적용, 맞춤형 설계 지원</li>
+              <li>안전 기준 준수 및 친환경 설계</li>
+            </ul>
+            <div className="text-xs text-gray-400">* 실제 제품 사양 및 적용 사례는 문의 시 상세 안내</div>
+          </div>
+        )}
+      </Modal>
       <div className="w-full max-w-4xl">
         {/* 브랜드 슬로건 반복 노출 */}
         <div className="mb-10 text-center">
@@ -68,7 +91,11 @@ export default function Products() {
                 <li>글로벌 인증 획득</li>
                 <li>다양한 산업 현장 적용</li>
               </ul>
-              <button className="mt-2 bg-mint-400 text-navy font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-mint-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-mint-400 shadow-sm text-base tracking-wide">
+              <button
+                className="mt-2 bg-mint-400 text-navy font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-mint-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-mint-400 shadow-sm text-base tracking-wide"
+                onClick={() => setSelected(prod)}
+                type="button"
+              >
                 상세보기
               </button>
             </div>
