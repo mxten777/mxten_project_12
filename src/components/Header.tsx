@@ -1,6 +1,7 @@
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useRef } from 'react';
+import DarkModeToggle from './DarkModeToggle';
 
 const nav = [
   { to: 'home', label: 'Home' },
@@ -101,7 +102,7 @@ export default function Header() {
           </nav>
         </div>
       )}
-      <div className="flex gap-2 ml-4">
+  <div className="flex gap-2 ml-4 items-center">
         <button
           onClick={() => {
             if (locale !== 'ko') {
@@ -125,6 +126,7 @@ export default function Header() {
           className={`px-2 py-1 rounded ${locale === 'en' ? 'bg-white text-blue-900 font-bold' : ''}`}
           aria-label="영어"
         >EN</button>
+        <DarkModeToggle />
       </div>
     </header>
   );
