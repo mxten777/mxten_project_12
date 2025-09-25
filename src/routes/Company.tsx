@@ -24,29 +24,29 @@ export default function Company() {
       </Helmet>
       {/* 브랜드 슬로건 반복 노출 */}
       <div className="mb-10 text-center">
-        <span className="block">
-          <span className="font-extrabold text-xl md:text-2xl text-blue-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+        <span className="block leading-[1.05]">
+          <span className="block font-bold text-lg md:text-xl text-blue-400 tracking-tight mb-0">
             {t('slogan.growth')}
           </span>
-          <span className="font-extrabold text-xl md:text-2xl text-mint-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+          <span className="block font-bold text-lg md:text-xl text-purple-500 tracking-tight mb-0">
             {t('slogan.passion')}
           </span>
-          <span className="font-extrabold text-xl md:text-2xl text-navy tracking-wide drop-shadow-lg animate-fade-in block">
+            <span className="block font-bold text-lg md:text-xl text-pink-500 tracking-tight">
             {t('slogan.safety')}
           </span>
         </span>
       </div>
-      <section className="w-full max-w-2xl text-center bg-gradient-glass rounded-2xl shadow-glass p-8 md:p-14 backdrop-blur-md border border-gray-100">
+  <section className="w-full max-w-2xl text-center bg-gradient-glass rounded-2xl shadow-md p-8 md:p-14 backdrop-blur-md border border-gray-100">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-navy leading-tight flex items-center justify-center gap-2">
           <BuildingOffice2Icon className="w-7 h-7 text-blue-400" aria-hidden="true" />
           회사 소개
         </h2>
         <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">동해기계는 산업의 미래를 선도하는 기업입니다.<br />글로벌 성장, 안전 중심, 열정, 혁신을 핵심 가치로 삼고 있습니다.</p>
         <div className="mb-8">
-          <span className="inline-block bg-mint-100 text-navy font-bold px-4 py-2 rounded-full shadow-soft text-base md:text-lg">비전: 글로벌 성장 · 안전 중심 · 혁신</span>
+          <span className="inline-block bg-mint-100 text-navy font-bold px-4 py-2 rounded-full shadow-sm text-base md:text-lg">비전: 글로벌 성장 · 안전 중심 · 혁신</span>
         </div>
-        <img src="/company.jpg" alt="동해기계 사옥 외관" className="mx-auto rounded shadow mb-8 w-full max-h-72 object-cover object-center animate-fade-in border border-gray-100" loading="lazy" />
-        <a href="#inquiry" className="inline-block bg-blue-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-soft hover:shadow-lg text-lg tracking-wide" aria-label="문의하기 바로가기">문의하기</a>
+  <img src="/company.jpg" alt="동해기계 사옥 외관" className="mx-auto rounded shadow-sm mb-8 w-full max-h-72 object-cover object-center animate-fade-in border border-gray-100" loading="lazy" />
+  <a href="#inquiry" className="inline-block bg-blue-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm text-lg tracking-wide" aria-label="문의하기 바로가기">문의하기</a>
       </section>
       <div className="w-full max-w-5xl mt-12 md:mt-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-navy">회사 연혁</h2>

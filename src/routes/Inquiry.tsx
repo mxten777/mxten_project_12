@@ -32,20 +32,20 @@ export default function Inquiry() {
     <main className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-50 to-mint-400/10 px-4 md:px-8 py-16 md:py-28 font-sans" role="main">
       {/* 브랜드 슬로건 반복 노출 */}
       <div className="mb-8 text-center">
-        <span className="block">
-          <span className="font-extrabold text-xl md:text-2xl text-blue-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+        <span className="block leading-[1.05]">
+          <span className="block font-bold text-lg md:text-xl text-blue-400 tracking-tight mb-0">
             {t('slogan.growth')}
           </span>
-          <span className="font-extrabold text-xl md:text-2xl text-mint-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+          <span className="block font-bold text-lg md:text-xl text-purple-500 tracking-tight mb-0">
             {t('slogan.passion')}
           </span>
-          <span className="font-extrabold text-xl md:text-2xl text-navy tracking-wide drop-shadow-lg animate-fade-in block">
+            <span className="block font-bold text-lg md:text-xl text-pink-500 tracking-tight">
             {t('slogan.safety')}
           </span>
         </span>
       </div>
       <form
-        className="w-full max-w-lg bg-gradient-glass rounded-2xl shadow-glass p-8 md:p-14 flex flex-col gap-6 backdrop-blur-md border border-gray-100"
+  className="w-full max-w-lg bg-gradient-glass rounded-2xl shadow-md p-8 md:p-14 flex flex-col gap-6 backdrop-blur-md border border-gray-100"
         onSubmit={e => {e.preventDefault(); handleSubmit(e); if (!Object.values(error).some(Boolean) && !loading) setModalOpen(true);}}
         aria-label="문의 폼"
         autoComplete="on"
@@ -59,7 +59,7 @@ export default function Inquiry() {
           id="name"
           name="name"
           type="text"
-          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-md placeholder-gray-400"
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-sm placeholder-gray-400"
           value={form.name}
           onChange={handleChange}
           aria-required="true"
@@ -73,7 +73,7 @@ export default function Inquiry() {
           id="email"
           name="email"
           type="email"
-          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-md placeholder-gray-400"
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-sm placeholder-gray-400"
           value={form.email}
           onChange={handleChange}
           aria-required="true"
@@ -86,7 +86,7 @@ export default function Inquiry() {
         <textarea
           id="message"
           name="message"
-          className="border rounded px-3 py-2 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-md placeholder-gray-400"
+          className="border rounded px-3 py-2 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-sm placeholder-gray-400"
           value={form.message}
           onChange={handleChange}
           aria-required="true"
@@ -110,7 +110,7 @@ export default function Inquiry() {
         {error.global && <span className="text-red-500 text-sm mt-1">{error.global}</span>}
         <button
           type="submit"
-          className="mt-4 bg-blue-400 text-white font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-soft hover:shadow-lg text-lg tracking-wide"
+          className="mt-4 bg-blue-400 text-white font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm text-lg tracking-wide"
           disabled={loading}
           aria-busy={loading}
         >

@@ -20,14 +20,14 @@ export default function Products() {
       <div className="w-full max-w-4xl">
         {/* 브랜드 슬로건 반복 노출 */}
         <div className="mb-10 text-center">
-          <span className="block">
-            <span className="font-extrabold text-xl md:text-2xl text-blue-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+          <span className="block leading-[1.05]">
+            <span className="block font-bold text-lg md:text-xl text-blue-400 tracking-tight mb-0">
               {t('slogan.growth')}
             </span>
-            <span className="font-extrabold text-xl md:text-2xl text-mint-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+            <span className="block font-bold text-lg md:text-xl text-purple-500 tracking-tight mb-0">
               {t('slogan.passion')}
             </span>
-            <span className="font-extrabold text-xl md:text-2xl text-navy tracking-wide drop-shadow-lg animate-fade-in block">
+                <span className="block font-bold text-lg md:text-xl text-pink-500 tracking-tight">
               {t('slogan.safety')}
             </span>
           </span>
@@ -40,7 +40,7 @@ export default function Products() {
           {categories.map(cat => (
             <button
               key={cat.id}
-              className="px-5 py-2 rounded-full bg-blue-400 text-white font-semibold transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-soft hover:shadow-lg tracking-wide text-base"
+              className="px-5 py-2 rounded-full bg-blue-400 text-white font-semibold transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm tracking-wide text-base"
               aria-label={cat.name}
             >
               {cat.name}
@@ -52,7 +52,7 @@ export default function Products() {
           {products.map(prod => (
             <div
               key={prod.id}
-              className="bg-white rounded-2xl shadow-soft p-6 text-gray-900 transition-all duration-200 hover:shadow-xl hover:-translate-y-1 hover:scale-105 focus-within:shadow-xl focus-within:-translate-y-1 focus-within:scale-105 cursor-pointer border border-gray-100 flex flex-col justify-between"
+              className="bg-white rounded-2xl shadow-sm p-6 text-gray-900 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:scale-105 focus-within:shadow-md focus-within:-translate-y-1 focus-within:scale-105 cursor-pointer border border-gray-100 flex flex-col justify-between"
               tabIndex={0}
               aria-label={prod.name}
             >
@@ -68,7 +68,7 @@ export default function Products() {
                 <li>글로벌 인증 획득</li>
                 <li>다양한 산업 현장 적용</li>
               </ul>
-              <button className="mt-2 bg-mint-400 text-navy font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-mint-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-mint-400 shadow-soft hover:shadow-lg text-base tracking-wide">
+              <button className="mt-2 bg-mint-400 text-navy font-bold py-2 px-4 rounded-full transition-all duration-200 hover:bg-mint-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-mint-400 shadow-sm text-base tracking-wide">
                 상세보기
               </button>
             </div>

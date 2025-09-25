@@ -13,24 +13,27 @@ export default function Policy() {
       <main className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-50 to-mint-400/10 px-4 md:px-8 py-16 md:py-28 font-sans" role="main">
         {/* 브랜드 슬로건 반복 노출 */}
         <div className="mb-8 text-center">
-          <span className="block">
-            <span className="font-extrabold text-xl md:text-2xl text-blue-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+          <span className="block leading-[1.05]">
+            <span className="block font-bold text-lg md:text-xl text-blue-400 tracking-tight mb-0">
               {t('slogan.growth')}
             </span>
-            <span className="font-extrabold text-xl md:text-2xl text-mint-400 tracking-wide drop-shadow-lg animate-fade-in block mb-2">
+            <span className="block font-bold text-lg md:text-xl text-purple-500 tracking-tight mb-0">
               {t('slogan.passion')}
             </span>
-            <span className="font-extrabold text-xl md:text-2xl text-navy tracking-wide drop-shadow-lg animate-fade-in block">
+             <span className="block font-bold text-lg md:text-xl text-navy tracking-tight">
+               {t('slogan.safety')}
+             </span>
+              <span className="block font-bold text-lg md:text-xl text-pink-500 tracking-tight">
               {t('slogan.safety')}
             </span>
           </span>
         </div>
-        <section className="w-full max-w-2xl bg-gradient-glass rounded-2xl shadow-glass p-8 md:p-14 backdrop-blur-md border border-gray-100">
+  <section className="w-full max-w-2xl bg-gradient-glass rounded-2xl shadow-md p-8 md:p-14 backdrop-blur-md border border-gray-100">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-navy leading-tight flex items-center gap-2" tabIndex={0} aria-label="개인정보 처리방침">
             <ShieldCheckIcon className="w-7 h-7 text-blue-400" aria-hidden="true" />
             개인정보 처리방침
           </h2>
-          <article className="bg-white rounded-xl shadow-soft p-6 text-gray-900" tabIndex={0} aria-label="정책 전문">
+          <article className="bg-white rounded-xl shadow-sm p-6 text-gray-900" tabIndex={0} aria-label="정책 전문">
             <p className="mb-4">동해기계는 고객의 개인정보를 소중히 다루며, 관련 법령을 준수합니다.</p>
             <ul className="list-disc list-inside text-gray-700 text-sm mb-4">
               <li>수집 항목: 이름, 이메일, 회사, 문의 내용 등</li>
