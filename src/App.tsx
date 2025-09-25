@@ -62,7 +62,7 @@ export default function App() {
         <meta property="og:locale" content="ko_KR" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-mint-400/10 to-purple-400/10 dark:from-navy dark:via-blue-900/60 dark:to-purple-500/20 transition-colors duration-500">
+  <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-mint-400/10 to-purple-400/10 dark:from-[#101624] dark:via-[#1B2A3A] dark:to-[#101624] transition-colors duration-500">
         <Suspense fallback={<div>Loading...</div>}>
           <BrowserRouter>
             <Routes>
