@@ -11,6 +11,7 @@ import Inquiry from './routes/Inquiry';
 import Company from './routes/Company';
 import Policy from './routes/Policy';
 import Admin from './routes/Admin';
+import { Greeting, Overview, Org, Location, Plant1, Plant2, Plant3, Plant4, Heavy, Plant, Equipment, Measure, Lab, News, Catalog, Video, Notice, InquiryCS } from './routes/_import_sebupages';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -40,6 +41,30 @@ function LocaleRoutes() {
           <Route path="company" element={<Company />} />
           <Route path="policy" element={<Policy />} />
           <Route path="admin" element={<Admin />} />
+          {/* 회사소개 세부 */}
+          <Route path="company/greeting" element={<Greeting />} />
+          <Route path="company/overview" element={<Overview />} />
+          <Route path="company/org" element={<Org />} />
+          <Route path="company/location" element={<Location />} />
+          {/* 사업장소개 세부 */}
+          <Route path="factory/plant1" element={<Plant1 />} />
+          <Route path="factory/plant2" element={<Plant2 />} />
+          <Route path="factory/plant3" element={<Plant3 />} />
+          <Route path="factory/plant4" element={<Plant4 />} />
+          {/* 사업소개 세부 */}
+          <Route path="business/heavy" element={<Heavy />} />
+          <Route path="business/plant" element={<Plant />} />
+          <Route path="business/equipment" element={<Equipment />} />
+          <Route path="business/measure" element={<Measure />} />
+          {/* 연구개발 세부 */}
+          <Route path="rnd/lab" element={<Lab />} />
+          {/* 홍보센터 세부 */}
+          <Route path="pr/news" element={<News />} />
+          <Route path="pr/catalog" element={<Catalog />} />
+          <Route path="pr/video" element={<Video />} />
+          <Route path="pr/notice" element={<Notice />} />
+          {/* 고객센터 세부 */}
+          <Route path="cs/inquiry" element={<InquiryCS />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -62,7 +87,7 @@ export default function App() {
         <meta property="og:locale" content="ko_KR" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
-  <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-mint-400/10 to-purple-400/10 dark:from-[#101624] dark:via-[#1B2A3A] dark:to-[#101624] transition-colors duration-500">
+  <div className="min-h-screen w-full flex flex-col">
         <Suspense fallback={<div>Loading...</div>}>
           <BrowserRouter>
             <Routes>

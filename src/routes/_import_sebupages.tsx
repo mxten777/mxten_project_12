@@ -1,0 +1,19 @@
+// 세부페이지 자동 import
+export { default as Greeting } from './company/Greeting';
+export { default as Overview } from './company/Overview';
+export { default as Org } from './company/Org';
+export { default as Location } from './company/Location';
+export { default as Plant1 } from './factory/Plant1';
+export { default as Plant2 } from './factory/Plant2';
+export { default as Plant3 } from './factory/Plant3';
+export { default as Plant4 } from './factory/Plant4';
+export { default as Heavy } from './business/Heavy';
+export { default as Plant } from './business/Plant';
+export { default as Equipment } from './business/Equipment';
+export { default as Measure } from './business/Measure';
+export { default as Lab } from './rnd/Lab';
+export { default as News } from './pr/News';
+export { default as Catalog } from './pr/Catalog';
+export { default as Video } from './pr/Video';
+export { default as Notice } from './pr/Notice';
+export { default as InquiryCS } from './cs/Inquiry';

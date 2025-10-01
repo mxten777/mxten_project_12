@@ -1,3 +1,4 @@
+import Footer from '../components/Footer';
 import { DocumentArrowDownIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'react-i18next';
 
@@ -8,39 +9,47 @@ export default function Downloads() {
   ];
   const { t } = useTranslation();
   return (
-    <main className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-50 to-mint-400/10 px-4 md:px-8 py-16 md:py-28 font-sans" role="main">
-      {/* 브랜드 슬로건 반복 노출 */}
-      <div className="mb-10 text-center">
-        <span className="block leading-[1.05]">
-          <span className="block font-bold text-base md:text-lg text-blue-400 tracking-tight mb-0">
+  <main className="min-h-screen w-full flex flex-col items-center bg-white dark:bg-gray-900 px-0 py-0 font-sans font-pretendard relative overflow-x-hidden" role="main">
+      {/* Section Divider Top */}
+      <div className="w-full max-w-2xl mx-auto border-b border-gray-100 mt-0 mb-0" />
+      {/* 브랜드 슬로건 */}
+      <div className="mb-16 text-left w-full max-w-2xl mx-auto mt-32">
+        <span className="block leading-[1.12]">
+          <span className="block font-bold text-base md:text-lg text-blue-600 tracking-tight mb-2">
             {t('slogan.growth')}
           </span>
-          <span className="block font-bold text-base md:text-lg text-mint-400 tracking-tight mb-0">
+          <span className="block font-bold text-base md:text-lg text-navy tracking-tight mb-2">
             {t('slogan.passion')}
           </span>
-          <span className="block font-bold text-base md:text-lg text-navy tracking-tight">
+          <span className="block font-bold text-base md:text-lg text-gray-400 tracking-tight">
             {t('slogan.safety')}
           </span>
         </span>
       </div>
-      <section className="w-full max-w-2xl bg-gradient-glass rounded-2xl shadow-glass p-8 md:p-14 backdrop-blur-md border border-gray-100 text-center">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-navy leading-tight flex items-center justify-center gap-2">
-          <DocumentArrowDownIcon className="w-7 h-7 text-blue-400" aria-hidden="true" />
+      {/* Section Divider */}
+      <div className="w-full max-w-2xl mx-auto border-t border-gray-100 mb-10" />
+      <section className="w-full max-w-2xl mx-auto mb-24 relative z-10">
+        <h1 className="text-base md:text-lg font-bold mb-10 text-navy leading-tight flex items-center gap-2">
+          <DocumentArrowDownIcon className="w-6 h-6 text-blue-600" aria-hidden="true" />
           다운로드
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {files.map(file => (
-            <div key={file.id} className="bg-white rounded-2xl shadow-soft p-6 flex flex-col items-center border border-gray-100 hover:shadow-xl transition-all">
-              <DocumentArrowDownIcon className="w-8 h-8 text-mint-400 mb-2" aria-hidden="true" />
-              <div className="font-bold text-lg md:text-xl mb-2 text-navy">{file.name}</div>
-              <div className="text-sm text-gray-600 mb-3">{file.desc}</div>
-              <a href={file.url} download className="bg-blue-400 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-500 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-soft">
+            <div key={file.id} className="bg-white rounded-xl p-7 md:p-8 text-left border border-gray-100 flex flex-col justify-between mb-4 transition-all hover:shadow-none hover:border-blue-100 cursor-pointer">
+              <DocumentArrowDownIcon className="w-8 h-8 text-blue-500 mb-3" aria-hidden="true" />
+              <div className="font-medium text-sm md:text-base mb-1 text-navy">{file.name}</div>
+              <div className="text-xs md:text-sm mb-2 text-gray-500 font-normal leading-relaxed">{file.desc}</div>
+              <a href={file.url} download className="bg-blue-500 text-white font-medium py-2 px-7 rounded-full border border-blue-500 shadow-none hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 text-xs md:text-sm tracking-wider transition-all">
                 PDF 다운로드
               </a>
             </div>
           ))}
         </div>
       </section>
+      {/* Section Divider Bottom */}
+      <div className="w-full max-w-2xl mx-auto border-t border-gray-100 mb-8" />
+  {/* Footer */}
+      <Footer />
     </main>
   );
 }

@@ -1,75 +1,97 @@
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { SparklesIcon } from '@heroicons/react/24/solid';
-import { useTranslation } from 'react-i18next';
-import Modal from '../components/Modal';
+import React, { useState } from "react";
+
+// 카드 컴포넌트: 함수 바깥에서 선언
+type ProductCardProps = {
+  name: string;
+  description: string;
+  image: string;
+};
+
+const ProductCard = ({ name, description, image }: ProductCardProps) => (
+  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 flex flex-col items-center border border-gray-100 dark:border-gray-800">
+    <img src={image} alt={name} className="rounded-3xl shadow-2xl w-[320px] h-[320px] object-cover mb-6" />
+    <div className="font-bold text-lg mb-2 text-navy dark:text-blue-200">{name}</div>
+    <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center">{description}</div>
+  </div>
+);
+// ...existing code...
+
+const products = [
+  { id: 1, name: "HEAVY EQUIPMENT", description: "굴삭기 · 휠로더 · 불도저 · 광산장비 · 초대형 휠로더 · 고소작업차량", image: "/images/donghae-05.jpg" },
+  { id: 2, name: "PLANT SOLUTIONS", description: "발전 · 석유화학 · 지역난방 · LNG · 하이테크 · 환경사업", image: "/images/donghae-06.jpg" },
+  { id: 3, name: "GLOBAL EXPORT", description: "30개국 수출 · 품질 인증 · 글로벌 스탠다드", image: "/images/donghae-07.jpg" },
+  { id: 4, name: "SAFETY & QUALITY", description: "안전관리 · 품질보증 · 인증서 · 글로벌 기준", image: "/images/donghae-08.jpg" },
+  { id: 5, name: "INNOVATION", description: "기술혁신 · R&D · 스마트공장 · 친환경 설비", image: "/images/donghae-09.jpg" },
+  { id: 6, name: "PARTNERSHIP", description: "국내외 협력 · 고객지원 · 글로벌 네트워크", image: "/images/donghae-10.jpg" },
+  { id: 7, name: "CUSTOMER FIRST", description: "고객 제일주의 · 맞춤형 서비스 · 신속 대응", image: "/images/donghae-01.jpg" },
+  { id: 8, name: "GLOBAL NETWORK", description: "30개국 수출 · 글로벌 파트너십 · 현지화 전략", image: "/images/donghae-02.jpg" },
+  { id: 9, name: "SUSTAINABILITY", description: "친환경 · 사회적 책임 · 지속가능경영", image: "/images/donghae-03.jpg" },
+];
+
+const trustBadges = [
+  { id: 1, label: "수출유공자", description: "한국무역협회장상 · 무역의 탑 수상", image: "/images/donghae-01.jpg" },
+  { id: 2, label: "품질 인증", description: "글로벌 품질 · 안전 중심 · 고객 제일주의", image: "/images/donghae-02.jpg" },
+  { id: 3, label: "글로벌 리딩 컴퍼니", description: "Global Leading Company 선정", image: "/images/donghae-03.jpg" },
+];
 
 export default function Home() {
-  const [showToast, setShowToast] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  // 상태 관리 변수를 제거하여 props/상태 최소화
+  // const [selectedProduct, setSelectedProduct] = useState(null);
 
-  useEffect(() => {
-    if (showToast) {
-      const t = setTimeout(() => setShowToast(false), 2000);
-      return () => clearTimeout(t);
-    }
-  }, [showToast]);
-
-  const { t } = useTranslation();
   return (
-    <>
-      <Helmet>
-        <title>동해기계 Donghae Machinery | 메인</title>
-        <meta name="description" content="동해기계 공식 홈페이지 메인. 산업 혁신을 이끄는 신뢰와 기술의 기업." />
-      </Helmet>
-    <main className="min-h-screen w-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-50 to-mint-400/10 dark:from-[#101624] dark:via-[#1B2A3A] dark:to-[#101624] px-4 md:px-8 py-16 md:py-28 font-sans transition-colors duration-500" role="main">
-  <section className="w-full max-w-2xl text-center bg-white/90 dark:bg-navy/90 rounded-2xl shadow-sm p-8 md:p-14 backdrop-blur-md border border-gray-100 dark:border-blue-900">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-8 text-navy leading-none flex flex-col items-center justify-center gap-0">
-            <span className="flex items-center justify-center gap-3">
-              <SparklesIcon className="w-8 h-8 text-blue-400 animate-pulse" aria-hidden="true" />
-              <span className="tracking-wide">{t('footer.brand')}</span>
-            </span>
-            <span className="block mt-4 text-center">
-                <span className="block font-bold text-lg md:text-xl text-blue-400 tracking-tight mb-0 animate-fade-in">
-                  {t('slogan.growth')}
-                </span>
-                <span className="block font-bold text-lg md:text-xl text-purple-500 tracking-tight mb-0 animate-fade-in">
-                  {t('slogan.passion')}
-                </span>
-                  <span className="block font-bold text-lg md:text-xl text-pink-500 tracking-tight animate-fade-in">
-                  {t('slogan.safety')}
-                </span>
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">산업의 혁신을 이끄는 동해기계, 신뢰와 기술로 함께합니다.</p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-6">
-            <a
-              href="#inquiry"
-              className="inline-block bg-blue-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-blue-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm text-lg tracking-wide"
-              aria-label="문의하기 바로가기"
-              onClick={e => {e.preventDefault(); setModalOpen(true);}}
-            >
-              문의하기
-            </a>
-            <a
-              href="#products"
-              className="inline-block bg-mint-400 text-navy font-bold py-3 px-8 rounded-full transition-all duration-200 hover:bg-mint-500 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-mint-400 shadow-sm text-lg tracking-wide"
-              aria-label="제품 보러가기"
-            >
-              제품 보러가기
-            </a>
-          </div>
-        </section>
-        {showToast && (
-          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-navy/90 text-white px-6 py-3 rounded shadow-md animate-fade-in z-50 font-semibold text-base backdrop-blur-md border border-blue-400">
-            문의하기 섹션으로 이동합니다
-          </div>
-        )}
-        <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="문의하기">
-          <div className="text-gray-600 text-base mb-4">빠른 문의를 원하시면 아래 이메일로 연락해 주세요.<br />contact@donghae.co.kr</div>
-          <a href="mailto:contact@donghae.co.kr" className="inline-block bg-blue-400 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-500 transition-all">이메일 문의</a>
-        </Modal>
-      </main>
-    </>
+    <main className="w-full min-h-screen bg-white dark:bg-gray-900 font-pretendard">
+      {/* Hero Section */}
+      <section className="relative w-full max-w-screen-xl mx-auto min-h-[700px] flex flex-col items-center justify-center overflow-hidden px-0 md:px-8 py-0 md:py-12">
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 via-blue-300 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
+        <h1 className="relative z-10 text-white dark:text-gray-100 text-4xl sm:text-6xl md:text-7xl font-extrabold text-center mb-8 drop-shadow-2xl leading-tight tracking-tight">
+          무한한 열정과<br />안전중심의 동해기계
+        </h1>
+        <p className="relative z-10 text-blue-100 dark:text-blue-200 text-xl md:text-3xl text-center mb-10 font-medium leading-relaxed">
+          글로벌 스탠다드, 품질과 안전을 바탕으로<br />30개국 수출과 혁신을 실현합니다
+        </p>
+        <div className="relative z-10 flex flex-col sm:flex-row gap-6 w-full justify-center items-center">
+          <a
+            href="#inquiry"
+            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-2xl text-xl md:text-2xl w-full sm:w-auto text-center transition"
+            aria-label="문의하기 바로가기"
+          >
+            문의하기
+          </a>
+          <a
+            href="#company"
+            className="bg-white bg-opacity-30 hover:bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-40 dark:hover:bg-opacity-60 text-blue-900 dark:text-blue-200 font-bold py-4 px-10 rounded-full border border-white dark:border-gray-300 text-xl md:text-2xl w-full sm:w-auto text-center transition"
+            aria-label="회사개요 바로가기"
+          >
+            회사개요 바로가기
+          </a>
+        </div>
+      </section>
+
+      {/* Product Cards */}
+      <section className="w-full max-w-screen-xl mx-auto py-16 px-4 md:px-0">
+        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-navy dark:text-blue-200 text-center tracking-tight">주요 서비스</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+          {products.map(({ id, name, description, image }) => (
+            <ProductCard key={id} name={name} description={description} image={image} />
+          ))}
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section className="w-full max-w-screen-xl mx-auto py-16 px-4 md:px-0">
+        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-navy dark:text-blue-200 text-center tracking-tight">신뢰의 이유</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+          {trustBadges.map(badge => (
+            <div key={badge.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 flex flex-col items-center border border-gray-100 dark:border-gray-800">
+              <img src={badge.image} alt={badge.label} className="w-16 h-16 object-contain mb-4" />
+              <div className="font-bold text-lg mb-2 text-navy dark:text-blue-200">{badge.label}</div>
+              <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center">{badge.description}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer는 App.tsx에서 렌더링되므로 중복 제거 */}
+    </main>
   );
 }
