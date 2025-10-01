@@ -21,8 +21,6 @@
     </div>
   </section>
 // ...existing code...
-import { CubeTransparentIcon } from '@heroicons/react/24/solid';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import Modal from '../components/Modal';
 
@@ -39,12 +37,11 @@ export default function Products() {
     { id: 'p2', name: '공압실린더', category: 'cat2', desc: '정밀 공압실린더' },
     { id: 'p3', name: '특수크레인', category: 'cat3', desc: '산업용 특수 크레인' },
   ];
-  const { t } = useTranslation();
   return (
   <main className="min-h-screen w-screen max-w-none flex flex-col items-center bg-white dark:bg-gray-900 px-0 py-0 font-sans font-pretendard relative overflow-x-hidden" role="main">
   {/* ...기존 브랜드 슬로건 영역 제거, Hero 섹션으로 대체... */}
       <h1 className="text-base md:text-lg font-bold mb-10 text-navy leading-tight flex items-center gap-2">
-        <CubeTransparentIcon className="w-6 h-6 text-blue-600" aria-hidden="true" />
+  {/* 아이콘 제거됨 */}
         제품 카테고리
       </h1>
       <div className="flex flex-wrap gap-2 md:gap-4 mb-6 justify-center">
@@ -70,7 +67,7 @@ export default function Products() {
           .filter(p => activeCategory === 'all' || p.category === activeCategory)
           .map(product => (
             <div key={product.id} className="bg-white rounded-xl p-7 md:p-8 text-left border border-gray-100 flex flex-col justify-between mb-4 transition-all hover:shadow-none hover:border-blue-100 cursor-pointer">
-              <CubeTransparentIcon className="w-8 h-8 text-blue-500 mb-3" aria-hidden="true" />
+              {/* 아이콘 제거됨 */}
               <div className="font-medium text-sm md:text-base mb-1 text-navy">{product.name}</div>
               <div className="text-xs md:text-sm mb-2 text-gray-500 font-normal leading-relaxed">{product.desc}</div>
               <button
@@ -86,7 +83,7 @@ export default function Products() {
         {selected && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <CubeTransparentIcon className="w-6 h-6 text-blue-600" />
+              {/* 아이콘 제거됨 */}
               <span className="font-bold text-lg text-navy">{selected.name}</span>
             </div>
             <div className="text-gray-700 text-base mb-1">{selected.desc}</div>

@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'react-i18next';
 import Modal from '../components/Modal';
-import Footer from '../components/Footer';
 
 export default function Inquiry() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '', agree: false });
@@ -56,7 +54,7 @@ export default function Inquiry() {
         autoComplete="on"
       >
         <div className="flex items-center gap-2 mb-7">
-          <EnvelopeIcon className="w-6 h-6 text-blue-500" aria-hidden="true" />
+          {/* 아이콘 제거됨 */}
           <h1 className="text-base md:text-lg font-bold text-navy leading-tight">문의하기</h1>
         </div>
         {/* Section Divider */}

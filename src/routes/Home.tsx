@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import HeroSection from '../components/HeroSection';
 
 // 카드 컴포넌트: 함수 바깥에서 선언
 type ProductCardProps = {
@@ -40,32 +40,16 @@ export default function Home() {
 
   return (
     <main className="w-full min-h-screen bg-white dark:bg-gray-900 font-pretendard">
-      {/* Hero Section */}
-      <section className="relative w-full max-w-screen-xl mx-auto min-h-[700px] flex flex-col items-center justify-center overflow-hidden px-0 md:px-8 py-0 md:py-12">
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 via-blue-300 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-        <h1 className="relative z-10 text-white dark:text-gray-100 text-4xl sm:text-6xl md:text-7xl font-extrabold text-center mb-8 drop-shadow-2xl leading-tight tracking-tight">
-          무한한 열정과<br />안전중심의 동해기계
-        </h1>
-        <p className="relative z-10 text-blue-100 dark:text-blue-200 text-xl md:text-3xl text-center mb-10 font-medium leading-relaxed">
-          글로벌 스탠다드, 품질과 안전을 바탕으로<br />30개국 수출과 혁신을 실현합니다
-        </p>
-        <div className="relative z-10 flex flex-col sm:flex-row gap-6 w-full justify-center items-center">
-          <a
-            href="#inquiry"
-            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-2xl text-xl md:text-2xl w-full sm:w-auto text-center transition"
-            aria-label="문의하기 바로가기"
-          >
-            문의하기
-          </a>
-          <a
-            href="#company"
-            className="bg-white bg-opacity-30 hover:bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-40 dark:hover:bg-opacity-60 text-blue-900 dark:text-blue-200 font-bold py-4 px-10 rounded-full border border-white dark:border-gray-300 text-xl md:text-2xl w-full sm:w-auto text-center transition"
-            aria-label="회사개요 바로가기"
-          >
-            회사개요 바로가기
-          </a>
-        </div>
-      </section>
+      {/* HeroSection 컴포넌트 사용 */}
+      <HeroSection
+        title="무한한 열정과 안전중심의 동해기계"
+        subtitle={"글로벌 스탠다드, 품질과 안전을 바탕으로\n30개국 수출과 혁신을 실현합니다"}
+        bgClass="bg-gradient-to-br from-blue-500 via-blue-300 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        buttons={[
+          { label: "문의하기", href: "/ko/inquiry", style: "bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full shadow-2xl text-base md:text-lg w-full sm:w-auto text-center transition" },
+          { label: "회사개요 바로가기", href: "/ko/company", style: "bg-white bg-opacity-30 hover:bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-40 dark:hover:bg-opacity-60 text-blue-900 dark:text-blue-200 font-bold py-2 px-6 rounded-full border border-white dark:border-gray-300 text-base md:text-lg w-full sm:w-auto text-center transition" }
+        ]}
+      />
 
       {/* Product Cards */}
       <section className="w-full max-w-screen-xl mx-auto py-16 px-4 md:px-0">
@@ -83,7 +67,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
           {trustBadges.map(badge => (
             <div key={badge.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 flex flex-col items-center border border-gray-100 dark:border-gray-800">
-              <img src={badge.image} alt={badge.label} className="w-16 h-16 object-contain mb-4" />
+              <img src={badge.image} alt={badge.label} className="rounded-3xl shadow-2xl w-[320px] h-[320px] object-cover mb-6" />
               <div className="font-bold text-lg mb-2 text-navy dark:text-blue-200">{badge.label}</div>
               <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center">{badge.description}</div>
             </div>

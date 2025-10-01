@@ -1,5 +1,3 @@
-import Footer from '../components/Footer';
-import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 import { useTranslation } from 'react-i18next';
 
 export default function Policy() {
@@ -29,7 +27,7 @@ export default function Policy() {
           tabIndex={0}
           aria-label="개인정보 처리방침"
         >
-          <ShieldCheckIcon className="w-6 h-6 text-blue-600" aria-hidden="true" />
+          {/* 아이콘 제거됨 */}
           개인정보 처리방침
         </h1>
   <div className="bg-white rounded-xl p-7 md:p-8 text-gray-700 border border-gray-100 shadow-none mb-24 text-left">

@@ -1,6 +1,4 @@
 // ...existing code...
-import { NewspaperIcon, PlayCircleIcon, DocumentTextIcon, ShareIcon, ArrowDownTrayIcon } from '@heroicons/react/24/solid';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import Modal from '../components/Modal';
 
@@ -14,7 +12,7 @@ export default function PR() {
   const [selected, setSelected] = useState<Post | null>(null);
   const [filterType, setFilterType] = useState<'all'|'news'|'video'|'press'>('all');
   const [search, setSearch] = useState('');
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <main className="min-h-screen w-full flex flex-col items-center bg-gray-50 dark:bg-gray-900 px-0 py-0 font-sans font-pretendard relative overflow-x-hidden" role="main">
@@ -43,7 +41,7 @@ export default function PR() {
       {/* Card Section */}
   <section className="w-full mb-24 relative z-10">
         <h1 className="text-base md:text-lg font-bold mb-10 text-navy leading-tight flex items-center gap-2">
-          <NewspaperIcon className="w-6 h-6 text-blue-600" aria-hidden="true" />
+          {/* 아이콘 제거됨 */}
           PR 센터
         </h1>
   <div className="bg-white dark:bg-gray-800 rounded-xl p-7 md:p-8 border border-gray-100 dark:border-gray-700 shadow-none">
@@ -70,9 +68,7 @@ export default function PR() {
               .map(post => (
                 <div key={post.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left border border-gray-100 dark:border-gray-700 flex flex-col justify-between mb-4 transition-all hover:shadow-none hover:border-blue-100 dark:hover:border-blue-400 cursor-pointer" onClick={() => setSelected(post)}>
                   <div className="flex items-center gap-2 mb-2">
-                    {post.type === 'news' && <NewspaperIcon className="w-6 h-6 text-blue-500" />}
-                    {post.type === 'video' && <PlayCircleIcon className="w-6 h-6 text-blue-500" />}
-                    {post.type === 'press' && <DocumentTextIcon className="w-6 h-6 text-blue-500" />}
+                    {/* 아이콘 제거됨 */}
                     <span className="font-medium text-sm md:text-base text-navy dark:text-blue-200">{post.title}</span>
                   </div>
                   <div className="text-xs md:text-sm mb-2 text-gray-500 dark:text-gray-300 font-normal leading-relaxed">{post.body}</div>
@@ -86,16 +82,14 @@ export default function PR() {
         {selected && (
           <div className="space-y-4 text-left">
             <div className="flex items-center gap-2 mb-2">
-              {selected.type === 'news' && <NewspaperIcon className="w-6 h-6 text-blue-600" />}
-              {selected.type === 'video' && <PlayCircleIcon className="w-6 h-6 text-blue-600" />}
-              {selected.type === 'press' && <DocumentTextIcon className="w-6 h-6 text-blue-600" />}
+              {/* 아이콘 제거됨 */}
               <span className="font-bold text-lg text-navy leading-tight">{selected.title}</span>
             </div>
             <div className="text-base text-gray-700 dark:text-gray-200 font-normal leading-relaxed mb-2">{selected.body}</div>
             <div className="text-sm text-gray-400 dark:text-gray-500 mb-4">{selected.date}</div>
             {selected.type === 'video' && (
               <div className="aspect-video bg-blue-50 dark:bg-blue-900 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-200 mb-4">
-                <PlayCircleIcon className="w-16 h-16" />
+                {/* 아이콘 제거됨 */}
                 <span className="ml-2 text-lg font-bold">제품 소개 영상</span>
               </div>
             )}
@@ -104,12 +98,12 @@ export default function PR() {
             )}
             {selected.type === 'press' && (
               <a href="#" className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-200 font-medium px-4 py-2 rounded-full border border-blue-100 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-blue-800 transition-all mb-4">
-                <ArrowDownTrayIcon className="w-5 h-5" /> 보도자료 다운로드
+                {/* 아이콘 제거됨 */}
               </a>
             )}
             <div className="flex gap-3 mt-2">
               <button className="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-navy dark:text-blue-200 font-medium px-4 py-2 rounded-full border border-gray-100 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-900 transition-all">
-                <ShareIcon className="w-5 h-5" /> 공유하기
+                {/* 아이콘 제거됨 */}
               </button>
             </div>
           </div>
