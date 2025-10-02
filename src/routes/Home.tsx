@@ -8,10 +8,10 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ name, description, image }: ProductCardProps) => (
-  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 flex flex-col items-center border border-gray-100 dark:border-gray-800">
-    <img src={image} alt={name} className="rounded-3xl shadow-2xl w-[320px] h-[320px] object-cover mb-6" />
-    <div className="font-bold text-lg mb-2 text-navy dark:text-blue-200">{name}</div>
-    <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center">{description}</div>
+  <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 flex flex-col items-center border border-blue-100 dark:border-blue-800 hover:scale-[1.04] hover:shadow-2xl hover:border-blue-400 transition-all duration-200 group cursor-pointer">
+    <img src={image} alt={name} className="rounded-2xl shadow-xl w-[220px] h-[220px] md:w-[260px] md:h-[260px] 2xl:w-[280px] 2xl:h-[280px] object-cover mb-6 border-2 border-blue-200 group-hover:shadow-2xl group-hover:border-blue-400 transition-all duration-200" />
+    <div className="font-extrabold text-xl mb-2 text-blue-900 dark:text-blue-200 tracking-tight text-center drop-shadow-sm">{name}</div>
+    <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center font-pretendard leading-relaxed">{description}</div>
   </div>
 );
 // ...existing code...
@@ -34,27 +34,30 @@ const trustBadges = [
   { id: 3, label: "글로벌 리딩 컴퍼니", description: "Global Leading Company 선정", image: "/images/donghae-03.jpg" },
 ];
 
+import { useCallback } from 'react';
+
 export default function Home() {
-  // 상태 관리 변수를 제거하여 props/상태 최소화
-  // const [selectedProduct, setSelectedProduct] = useState(null);
+  // 상위로 스크롤 함수
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <main className="w-full min-h-screen bg-white dark:bg-gray-900 font-pretendard">
       {/* HeroSection 컴포넌트 사용 */}
       <HeroSection
-        title="무한한 열정과 안전중심의 동해기계"
+        title={<span className="block text-4xl md:text-5xl font-extrabold tracking-tight text-blue-900 drop-shadow-lg">무한한 열정과<br className="hidden md:inline"/>안전중심의 동해기계</span>}
         subtitle={"글로벌 스탠다드, 품질과 안전을 바탕으로\n30개국 수출과 혁신을 실현합니다"}
-        bgClass="bg-gradient-to-br from-blue-500 via-blue-300 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+        bgClass="bg-gradient-to-br from-blue-600 via-blue-200 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-16 md:py-24"
         buttons={[
-          { label: "문의하기", href: "/ko/inquiry", style: "bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full shadow-2xl text-base md:text-lg w-full sm:w-auto text-center transition" },
-          { label: "회사개요 바로가기", href: "/ko/company", style: "bg-white bg-opacity-30 hover:bg-opacity-50 dark:bg-gray-700 dark:bg-opacity-40 dark:hover:bg-opacity-60 text-blue-900 dark:text-blue-200 font-bold py-2 px-6 rounded-full border border-white dark:border-gray-300 text-base md:text-lg w-full sm:w-auto text-center transition" }
+          { label: "회사개요 바로가기", href: "/ko/company", style: "bg-white bg-opacity-40 hover:bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-40 dark:hover:bg-opacity-60 text-blue-900 dark:text-blue-200 font-bold py-3 px-8 rounded-full border-2 border-blue-800 dark:border-blue-200 text-lg md:text-xl w-full sm:w-auto text-center transition-all duration-200 shadow-xl" }
         ]}
       />
 
       {/* Product Cards */}
-      <section className="w-full max-w-screen-xl mx-auto py-16 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-navy dark:text-blue-200 text-center tracking-tight">주요 서비스</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+      <section className="w-full max-w-screen-2xl mx-auto py-20 px-4 md:px-0">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-blue-900 dark:text-blue-200 text-center tracking-tight drop-shadow-lg">주요 서비스</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 md:gap-12 w-full">
           {products.map(({ id, name, description, image }) => (
             <ProductCard key={id} name={name} description={description} image={image} />
           ))}
@@ -62,20 +65,27 @@ export default function Home() {
       </section>
 
       {/* Trust Badges */}
-      <section className="w-full max-w-screen-xl mx-auto py-16 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl font-bold mb-10 text-navy dark:text-blue-200 text-center tracking-tight">신뢰의 이유</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+      <section className="w-full max-w-screen-2xl mx-auto py-20 px-4 md:px-0">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-blue-900 dark:text-blue-200 text-center tracking-tight drop-shadow-lg">신뢰의 이유</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 md:gap-12 w-full">
           {trustBadges.map(badge => (
-            <div key={badge.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 flex flex-col items-center border border-gray-100 dark:border-gray-800">
-              <img src={badge.image} alt={badge.label} className="rounded-3xl shadow-2xl w-[320px] h-[320px] object-cover mb-6" />
-              <div className="font-bold text-lg mb-2 text-navy dark:text-blue-200">{badge.label}</div>
-              <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center">{badge.description}</div>
+            <div key={badge.id} className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-10 flex flex-col items-center border border-blue-100 dark:border-blue-800 hover:scale-[1.04] hover:shadow-2xl hover:border-blue-400 transition-all duration-200 group cursor-pointer">
+              <img src={badge.image} alt={badge.label} className="rounded-2xl shadow-xl w-[180px] h-[180px] md:w-[200px] md:h-[200px] 2xl:w-[220px] 2xl:h-[220px] object-cover mb-6 border-2 border-blue-200 group-hover:shadow-2xl group-hover:border-blue-400 transition-all duration-200" />
+              <div className="font-extrabold text-xl mb-2 text-blue-900 dark:text-blue-200 tracking-tight text-center drop-shadow-sm">{badge.label}</div>
+              <div className="text-gray-600 dark:text-gray-300 text-base mb-4 text-center font-pretendard leading-relaxed">{badge.description}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Footer는 App.tsx에서 렌더링되므로 중복 제거 */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 z-50 bg-blue-700 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-full border-2 border-blue-800 text-lg shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        aria-label="맨 위로 이동"
+      >
+        ↑ 상위로
+      </button>
     </main>
   );
 }

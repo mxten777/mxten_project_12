@@ -14,6 +14,11 @@ import Admin from './routes/Admin';
 import { Greeting, Overview, Org, Location, Plant1, Plant2, Plant3, Plant4, Heavy, Plant, Equipment, Measure, Lab, News, Catalog, Video, Notice, InquiryCS } from './routes/_import_sebupages';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import FactoryOverview from './routes/factory/FactoryOverview';
+import LabOverview from './routes/rnd/LabOverview';
+import BusinessOverview from './routes/business/BusinessOverview';
+import PrOverview from './routes/pr/PrOverview';
+import CsOverview from './routes/cs/CsOverview';
 
 function NotFound() {
   return (
@@ -36,34 +41,31 @@ function LocaleRoutes() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="products" element={<Products />} />
-          <Route path="pr" element={<PR />} />
           <Route path="inquiry" element={<Inquiry />} />
-          <Route path="company" element={<Company />} />
-          <Route path="policy" element={<Policy />} />
-          <Route path="admin" element={<Admin />} />
-          {/* 회사소개 세부 */}
+          <Route path="company" element={<Greeting />} />
           <Route path="company/greeting" element={<Greeting />} />
           <Route path="company/overview" element={<Overview />} />
           <Route path="company/org" element={<Org />} />
           <Route path="company/location" element={<Location />} />
-          {/* 사업장소개 세부 */}
           <Route path="factory/plant1" element={<Plant1 />} />
           <Route path="factory/plant2" element={<Plant2 />} />
           <Route path="factory/plant3" element={<Plant3 />} />
           <Route path="factory/plant4" element={<Plant4 />} />
-          {/* 사업소개 세부 */}
+          <Route path="factory" element={<FactoryOverview />} />
           <Route path="business/heavy" element={<Heavy />} />
           <Route path="business/plant" element={<Plant />} />
           <Route path="business/equipment" element={<Equipment />} />
           <Route path="business/measure" element={<Measure />} />
-          {/* 연구개발 세부 */}
+          <Route path="business" element={<BusinessOverview />} />
+          <Route path="rnd" element={<LabOverview />} />
           <Route path="rnd/lab" element={<Lab />} />
-          {/* 홍보센터 세부 */}
+          <Route path="rnd/overview" element={<LabOverview />} />
+          <Route path="pr" element={<PrOverview />} />
           <Route path="pr/news" element={<News />} />
           <Route path="pr/catalog" element={<Catalog />} />
           <Route path="pr/video" element={<Video />} />
           <Route path="pr/notice" element={<Notice />} />
-          {/* 고객센터 세부 */}
+          <Route path="cs" element={<CsOverview />} />
           <Route path="cs/inquiry" element={<InquiryCS />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -92,6 +94,12 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route path=":locale/*" element={<LocaleRoutes />} />
+              <Route path="company" element={<Navigate to="/ko/company" replace />} />
+              <Route path="rnd" element={<Navigate to="/ko/rnd" replace />} />
+              <Route path="pr" element={<Navigate to="/ko/pr" replace />} />
+              <Route path="cs" element={<Navigate to="/ko/cs" replace />} />
+              <Route path="kr/*" element={<LocaleRoutes />} />
+              <Route path="en/*" element={<LocaleRoutes />} />
               <Route path="*" element={<Navigate to="/ko/home" replace />} />
             </Routes>
           </BrowserRouter>

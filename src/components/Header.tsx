@@ -9,7 +9,7 @@ const nav = [
     label: '회사소개',
     submenu: [
       { to: 'company/greeting', label: '인사말' },
-      { to: 'company/overview', label: '회사개요' },
+      { to: 'company/greeting', label: '회사개요' },
       { to: 'company/org', label: '조직도' },
       { to: 'company/location', label: '오시는길' },
     ],
@@ -36,16 +36,17 @@ const nav = [
   },
   {
     to: 'rnd',
-    label: '연구개발',
+    label: '기술연구소',
     submenu: [
-      { to: 'rnd/lab', label: '기술연구소' },
+      { to: 'rnd/lab', label: '연구개발' },
+      { to: 'rnd/overview', label: '혁신기술' },
     ],
   },
   {
     to: 'pr',
     label: '홍보센터',
     submenu: [
-      { to: 'pr/news', label: '회사뉴스' },
+  { to: 'pr', label: '회사뉴스' },
       { to: 'pr/catalog', label: '카탈로그' },
       { to: 'pr/video', label: '홍보영상' },
       { to: 'pr/notice', label: '공지사항' },
@@ -55,7 +56,7 @@ const nav = [
     to: 'cs',
     label: '고객센터',
     submenu: [
-      { to: 'cs/inquiry', label: '문의사항' },
+  { to: 'cs', label: '문의사항' },
     ],
   },
 ];
@@ -74,15 +75,10 @@ function MobileMenuItem({ item, locale, setOpen }: { item: NavItem; locale: stri
   const location = useLocation();
   const navigate = useNavigate();
   const isActive = location.pathname.split("/")[2] === item.to;
-  // 상위 메뉴 클릭 시 첫 하위 페이지로 이동
+  // 상위 메뉴 클릭 시 항상 overview(상위)로 이동
   const handleMenuClick = () => {
-    if (item.submenu && item.submenu.length > 0) {
-      navigate(`/${locale}/${item.submenu[0].to}`);
-      setOpen(false);
-    } else {
-      navigate(`/${locale}/${item.to}`);
-      setOpen(false);
-    }
+    navigate(`/${locale}/${item.to}`);
+    setOpen(false);
   };
   return (
     <div className="w-full">
@@ -105,20 +101,7 @@ function MobileMenuItem({ item, locale, setOpen }: { item: NavItem; locale: stri
           >▶</button>
         )}
       </div>
-      {item.submenu && showSub && (
-        <div id={`submenu-${item.to}`} className="pl-6 py-2 flex flex-col gap-1">
-          {item.submenu.map((sub: { to: string; label: string }) => (
-            <Link
-              key={sub.to}
-              to={`/${locale}/${sub.to}`}
-              className="block py-2 px-2 text-gray-600 hover:text-blue-500 text-base font-normal rounded-lg"
-              onClick={() => setOpen(false)}
-            >
-              {sub.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* 하위메뉴는 모바일에서만 펼침, 상위 메뉴 클릭 시에는 항상 overview로 이동 */}
     </div>
   );
 }
@@ -152,51 +135,39 @@ export default function Header() {
 
   return (
     <header
-      className="w-full bg-white/90 border-b border-gray-100 text-navy flex items-center justify-between px-4 md:px-8 py-5 sticky top-0 z-50 backdrop-blur-md"
+      className="w-full bg-white/95 border-b border-blue-100 text-navy flex items-center justify-between px-4 md:px-12 py-4 sticky top-0 z-50 backdrop-blur-md shadow-sm"
       role="banner"
     >
-      <Link to={`/${locale}/home`} className="font-extrabold text-2xl tracking-tight text-navy" aria-label="동해기계 홈">동해기계</Link>
+      <Link to={`/${locale}/home`} className="font-extrabold text-2xl sm:text-3xl tracking-tight text-blue-900 drop-shadow-sm font-pretendard" aria-label="동해기계 홈">
+        동해기계
+      </Link>
       {/* 데스크탑 네비게이션 */}
-      <nav className="hidden md:flex gap-7" aria-label="메인 메뉴">
+      <nav className="hidden md:flex gap-10 items-center" aria-label="메인 메뉴">
         {nav.map(item => {
           const isActive = location.pathname.split("/")[2] === item.to;
           return (
             <div key={item.to} className="relative group">
               <Link
-                to={item.submenu && item.submenu.length > 0 ? `/${locale}/${item.submenu[0].to}` : `/${locale}/${item.to}`}
-                className={`relative px-2 py-1 transition font-semibold tracking-wide text-lg
-                  ${isActive ? 'text-blue-400' : 'text-gray-500'}
+                to={`/${locale}/${item.to}`}
+                className={`relative px-5 py-2 font-semibold text-lg rounded-xl transition-all duration-200 font-pretendard
+                  ${isActive ? 'text-blue-800 bg-blue-50 shadow-md' : 'text-gray-600 hover:text-blue-700 hover:bg-blue-50'}
                   group focus:outline-none focus:ring-2 focus:ring-blue-400`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <span>{item.label}</span>
                 {isActive && (
-                  <span className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-5 h-1 bg-blue-400 rounded-full" aria-hidden="true"></span>
+                  <span className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-7 h-1 bg-blue-700 rounded-full" aria-hidden="true"></span>
                 )}
               </Link>
-              {/* 데스크탑 드롭다운 서브메뉴 */}
-              {item.submenu && (
-                <div className="absolute left-0 top-full mt-2 min-w-max bg-white shadow-xl rounded-xl border border-gray-100 py-3 px-6 z-40 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200">
-                  {item.submenu.map(sub => (
-                    <Link
-                      key={sub.to}
-                      to={`/${locale}/${sub.to}`}
-                      className="block py-1.5 px-2 text-gray-600 hover:text-blue-500 text-base font-normal whitespace-nowrap"
-                    >
-                      {sub.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
           );
         })}
       </nav>
       {/* 모바일 햄버거 */}
-      <button className="md:hidden p-2 bg-white/80 rounded-lg ml-2 flex flex-col items-center justify-center gap-1" aria-label="메뉴 열기" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(o => !o)}>
-        <span className="block w-7 h-1 bg-navy rounded-full"></span>
-        <span className="block w-7 h-1 bg-navy rounded-full"></span>
-        <span className="block w-7 h-1 bg-navy rounded-full"></span>
+      <button className="md:hidden p-2 bg-white/80 rounded-lg ml-2 flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:bg-blue-50" aria-label="메뉴 열기" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(o => !o)}>
+        <span className={`block w-7 h-1 rounded-full transition-all duration-200 ${open ? 'bg-blue-700 rotate-45 translate-y-2' : 'bg-navy'}`}></span>
+        <span className={`block w-7 h-1 rounded-full transition-all duration-200 ${open ? 'opacity-0' : 'bg-navy'}`}></span>
+        <span className={`block w-7 h-1 rounded-full transition-all duration-200 ${open ? 'bg-blue-700 -rotate-45 -translate-y-2' : 'bg-navy'}`}></span>
       </button>
       {/* 모바일 메뉴 */}
       {open && (
