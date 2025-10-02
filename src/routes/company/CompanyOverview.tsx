@@ -37,14 +37,6 @@ const sections = [
 ];
 
 export default function CompanyOverview() {
-  const [showTop, setShowTop] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowTop(window.scrollY > 200);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
